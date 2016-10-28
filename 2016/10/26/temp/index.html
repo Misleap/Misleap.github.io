@@ -92,7 +92,9 @@
 Mozilla Firefox —Gecko  Safari、Chrome —WebKit  Opera       —Presto  Intenet Explorer —Trident
 
 
-Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；  原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
+Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；
+
+原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Temp">
 <meta property="og:url" content="http://yoursite.com/2016/10/26/temp/index.html">
@@ -105,8 +107,10 @@ Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象
 Mozilla Firefox —Gecko  Safari、Chrome —WebKit  Opera       —Presto  Intenet Explorer —Trident
 
 
-Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；  原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
-<meta property="og:updated_time" content="2016-10-27T02:03:15.747Z">
+Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；
+
+原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
+<meta property="og:updated_time" content="2016-10-28T07:40:32.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Temp">
 <meta name="twitter:description" content="####碎片笔记
@@ -117,7 +121,9 @@ Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象
 Mozilla Firefox —Gecko  Safari、Chrome —WebKit  Opera       —Presto  Intenet Explorer —Trident
 
 
-Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；  原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
+Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象类型)；
+
+原始类型有：  1.number  整型；浮点型(注意精度问题)  2.st">
 
 
 
@@ -363,33 +369,41 @@ Js数据类型包括基本数据类型(原始类型)和引用数据类型(对象
 <p>Mozilla Firefox —Gecko<br>  Safari、Chrome —WebKit<br>  Opera       —Presto<br>  Intenet Explorer —Trident</p>
 </blockquote>
 </li>
-<li><p>Js数据类型包括<em>基本数据类型(原始类型)</em>和<em>引用数据类型(对象类型)</em>；<br>  <strong>原始类型</strong>有：<br>  1.number<br>  整型；浮点型(注意精度问题)<br>  2.string<br>  放在引号里的大串字符序列：</p>
-<pre><code>* 单双引号可以交替使用
+<li><p>Js数据类型包括<em>基本数据类型(原始类型)</em>和<em>引用数据类型(对象类型)</em>；</p>
+</li>
+<li>原始类型有：<br>  1.number<br>  整型；浮点型(注意精度问题)<br>  2.string<br>  放在引号里的大串字符序列：<pre><code>* 单双引号可以交替使用
 * 总是记混的几个方法：slice(截取，类似于substring)、split[分割，返回数组]
-</code></pre><p>  3.boolean<br>  任意的JS值都可以转换为布尔值</p>
-<pre><code>* undefined,null,0,-0,NaN,&quot;&quot;(空字符串)---&gt;false
+</code></pre>  3.boolean<br>  任意的JS值都可以转换为布尔值<pre><code>* undefined,null,0,-0,NaN,&quot;&quot;(空字符串)---&gt;false
 * 除以上外的所有值---&gt;true
-</code></pre><p>  4.null是object类型<br>  5.undefined未定义<br>  <strong>对象类型</strong>：Array,Function,Date,RegExp,Error<br>  对象是属性的集合，每个属性是有‘名/值对’构成；</p>
-<blockquote>
-<p>普通的Js对象是‘命名值’的无序集合;</p>
+</code></pre>  4.null是object类型<br>  5.undefined未定义</li>
+<li>对象类型：Array,Function,Date,RegExp,Error<br>  对象是属性的集合，每个属性是有‘名/值对’构成；<blockquote>
+<p>普通的Js对象是‘命名值’的无序集合;<br>var arr = [1, 2, 3];</p>
+<pre><code>arr.length; // 3
+arr.length = 6;
+arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
+arr.length = 2;
+arr; // arr变为[1, 2]
+</code></pre><p>var arr = [1, 2, 3];</p>
+<pre><code>arr[5] = &apos;x&apos;;
+arr; // arr变为[1, 2, 3, undefined, undefined, &apos;x&apos;]
+大多数其他编程语言不允许直接改变数组的大小，越界访问索引会报错。然而，JavaScript的Array却不会有任何错误。在编写代码时，不建议直接修改Array的大小，访问索引时要确保索引不会越界.
+</code></pre><p>实际上JavaScript对象的所有属性都是字符串，不过属性对应的值可以是任意数据类型。<br>JavaScript规定，访问不存在的属性不报错，而是返回undefined.<br>delete object.key;//删除对象属性</p>
+<pre><code>&apos;key&apos; in object;//检测是否拥有某一属性
+</code></pre><p>要判断一个属性是否是object自身拥有的，而不是继承得到的，可以用hasOwnProperty()方法;</p>
 </blockquote>
-<p>  <strong>Tips</strong>:</p>
-<ul>
-<li>在内存中存储方式不一样：前者存储在栈内存(Stack)中，后者存储在堆内存(heap)中</li>
-<li><p>所以，前者值不可更改，后者可以</p>
-<p><strong>类型转换</strong>：</p>
-<blockquote>
-<p>除了null和undefined不能进行类型转换外，其他所有类型的值都可以转换成其他类型。</p>
-</blockquote>
-</li>
-<li><p>string/number/boolean直接使用时，存在隐式转换；</p>
-</li>
-<li>toString()方法返回一个反映这个对象的字符串；</li>
-<li>valueOf()方法返回对象本身；</li>
-</ul>
 </li>
 </ul>
+<pre><code>**Tips**:
+- 在内存中存储方式不一样：前者存储在栈内存(Stack)中，后者存储在堆内存(heap)中
+- 所以，前者值不可更改，后者可以
 
+**类型转换**：
+&gt; 除了null和undefined不能进行类型转换外，其他所有类型的值都可以转换成其他类型。
+
+- string/number/boolean直接使用时，存在隐式转换；
+- toString()方法返回一个反映这个对象的字符串；
+- valueOf()方法返回对象本身；
+</code></pre>
       
     </div>
 
