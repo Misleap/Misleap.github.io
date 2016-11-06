@@ -1,36 +1,61 @@
-extends base
-
-block title
-  title= page.title + " | " + config.title
-
-block main
-
-  // gallery that comes before the header
-  if page.photos
-     if page.photos.length
-      .article-gallery
-        .article-gallery-photos.container
-          for photo in page.photos
-            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
-              img(src=url_for(photo), itemprop="image")
-
-  article.wrapper
-    .post-main
-      .nav
-        nav.container
-          each nav, name in theme.menu
-            +a_with_current(nav, __(name))
-        .container.post-meta
-          if (page.tags && page.tags.length)
-            .post-tags
-              != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:''})
-          .post-time= page.date.format(config.date_format)
-
-      .container.post-header
-        h1: = page.title
-
-      .container.post-content
-        != page.content
-
-    .post-main.post-comment
-      include _partial/comments
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Temp | May the force always be with u</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" type="text/css" href="//fonts.useso.com/css?family=Lato"></head><body><!-- gallery that comes before the header--><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a></nav><div class="container post-meta"><div class="post-time">2016-10-26</div></div></div><div class="container post-header"><h1>Temp</h1></div><div class="container post-content"><p>####碎片笔记</p>
+<hr>
+<ul>
+<li><p>浏览器一般包括渲染器和js脚本引擎</p>
+<blockquote>
+<p>Mozilla Firefox —Gecko<br>  Safari、Chrome —WebKit<br>  Opera       —Presto<br>  Intenet Explorer —Trident</p>
+</blockquote>
+</li>
+<li><p>Js数据类型包括<em>基本数据类型(原始类型)</em>和<em>引用数据类型(对象类型)</em>；</p>
+</li>
+<li><p>原始类型有：<br>  1.number<br>  整型；浮点型(注意精度问题)<br>  2.string<br>  放在引号里的大串字符序列：</p>
+<pre><code>* 单双引号可以交替使用
+* 总是记混的几个方法：slice(截取，类似于substring)、split[分割，返回数组]
+</code></pre><p>  3.boolean<br>  任意的JS值都可以转换为布尔值</p>
+<pre><code>* undefined,null,0,-0,NaN,&quot;&quot;(空字符串)---&gt;false
+* 除以上外的所有值---&gt;true
+</code></pre><p>  4.null是object类型<br>  5.undefined未定义</p>
+</li>
+<li><p>对象类型：Array,Function,Date,RegExp,Error</p>
+<p>  对象是属性的集合，每个属性是有‘名/值对’构成；</p>
+<blockquote>
+<p>普通的Js对象是‘命名值’的无序集合;</p>
+<pre><code>var arr = [1, 2, 3];
+arr.length; // 3
+arr.length = 6;
+arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
+arr.length = 2;
+arr; // arr变为[1, 2]
+var arr = [1, 2, 3];
+arr[5] = &apos;x&apos;;
+arr; // arr变为[1, 2, 3, undefined, undefined, &apos;x&apos;]
+大多数其他编程语言不允许直接改变数组的大小，越界访问索引会报错。然而，JavaScript的Array却不会有任何错误。在编写代码时，不建议直接修改Array的大小，访问索引时要确保索引不会越界.
+实际上JavaScript对象的所有属性都是字符串，不过属性对应的值可以是任意数据类型。
+JavaScript规定，访问不存在的属性不报错，而是返回undefined.
+delete object.key;//删除对象属性
+&apos;key&apos; in object;//检测是否拥有某一属性
+要判断一个属性是否是object自身拥有的，而不是继承得到的，可以用hasOwnProperty()方法;
+</code></pre></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Tips:</p>
+<ul>
+<li>在内存中存储方式不一样：前者存储在栈内存(Stack)中，后者存储在堆内存(heap)中</li>
+<li><p>所以，前者值不可更改，后者可以</p>
+<p><strong>类型转换</strong>：</p>
+<blockquote>
+<p>除了null和undefined不能进行类型转换外，其他所有类型的值都可以转换成其他类型。</p>
+</blockquote>
+</li>
+<li><p>string/number/boolean直接使用时，存在隐式转换；</p>
+</li>
+<li>toString()方法返回一个反映这个对象的字符串；</li>
+<li>valueOf()方法返回对象本身；</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
