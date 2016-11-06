@@ -1,23 +1,110 @@
-extends partial/layout
-include mixins/container
-include mixins/paginator
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Job Hunting | May the force always be with u</title>
 
-block title
-  title
-    if page.archive
-        != __('Archives') + " · " + config.title
-    if page.tag
-        != page.tag + " · " + config.title
-    if page.category
-        != page.category + " · " + config.title
+  
+  <meta name="author" content="Misleap">
+  
 
-block container
-  if page.archive
-    +archive()
-  if page.tag
-    +tag()
-  if page.category
-    +category()
+  
 
-block pagination
-  +paginator('archive')
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="May the force always be with u"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="May the force always be with u" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">May the force always be with u</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+
+<article>
+
+  <h2 class="article-title  tag">Job Hunting</h2>
+
+  <div class="archive">
+    
+      <div class="post archive">
+        <div class="archive-post">
+          <time datetime="2016-10-25T11:16:40.000Z">
+            <a href="/2016/10/25/interview/">2016-10-25</a>
+          </time>
+          
+            <h3 class="archive-title"><a href="/2016/10/25/interview/"><span>Interview</span></a></h3>
+          
+        </div>
+      </div>
+    
+      <div class="post archive">
+        <div class="archive-post">
+          <time datetime="2016-10-12T14:50:00.000Z">
+            <a href="/2016/10/12/offer-hunting/">2016-10-12</a>
+          </time>
+          
+            <h3 class="archive-title"><a href="/2016/10/12/offer-hunting/"><span>offer hunting</span></a></h3>
+          
+        </div>
+      </div>
+    
+    <nav class="pagination">
+  
+  
+</nav>
+  </div>
+
+</article>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 Misleap
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
