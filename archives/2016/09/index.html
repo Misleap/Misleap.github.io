@@ -1,110 +1,56 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Archives: 2016/9 | May the force always be with u</title>
+extends base
 
-  
-  <meta name="author" content="Misleap">
-  
+block title
+  if page.category
+     title= page.category + " | " + config.title
+  if page.tag
+     title= page.tag + " | " + config.title
+  if page.archive
+     title= __('archive') + " | " + config.title
 
-  
+block main
+  // Blog title and subtitle
+  header.wrapper.header
+    .container.blog-title
+      a#logo.title(href=url_for('.'))= config.title
+      span.subtitle= config.subtitle
+      label#toggle-menu(for="menu", onclick)
+        i.fa.fa-bars
+    // use checkbox hack for toggle nav-bar on small screens
+    input#menu(type="checkbox")
+    .container.nav-items
+      each nav, name in theme.menu
+        +a_with_current(nav, __(name))
 
-  
+  article.wrapper
+    .post-entry
+      if page.category || page.tag
+          h1.label-title=  (page.category || page.tag)
+      .post
+        // show all categories and tags
+        if !(page.category || page.tag)
+            .all-categories
+              ul.tag-box.list-unstyled
+                for category in site.categories.sort('name').toArray()
+                  li
+                    a(href=root+'categories/'+category.name)= category.name
+                      span= category.posts.length
+            .all-tags
+              ul.tag-box.list-unstyled
+                for tag in site.tags.sort('name').toArray()
+                  li
+                    a(href=root+'tags/'+tag.name)= tag.name
+                      span= tag.posts.length
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        .post-archive
+            //Use lodash to classify posts. See https://lodash.com/docs#groupBy
+            each posts, year in _.groupBy(page.posts.toArray(), function(p){return -p.date.format('YYYY')})
+              h2= -year
+              ul.listing
+                for post in posts
+                  li
+                    span.date= post.date.format('YYYY/MM/DD')
+                    a(href=url_for(post.path), title=post.title)
+                      = post.title
 
-  
-
-  <meta property="og:site_name" content="May the force always be with u"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="May the force always be with u" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-</head>
-
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">May the force always be with u</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    
-
-<article>
-
-  <h2 class="article-title ">2016/9</h2>
-
-  <div class="archive">
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2016-09-30T02:59:11.000Z">
-            <a href="/2016/09/30/20160930/">2016-09-30</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2016/09/30/20160930/"><span>言之昭昭，路之迢迢</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2016-09-29T14:14:36.844Z">
-            <a href="/2016/09/29/hello-world/">2016-09-29</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2016/09/29/hello-world/"><span>Hello World</span></a></h3>
-          
-        </div>
-      </div>
-    
-    <nav class="pagination">
-  
-  
-</nav>
-  </div>
-
-</article>
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2016 Misleap
-    
-  </p>
-</footer>
-    
-  </div>
-</div>
-</body>
-</html>
+  include _partial/paginator.jade

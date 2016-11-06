@@ -1,143 +1,36 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>言之昭昭，路之迢迢 | May the force always be with u</title>
+extends base
 
-  
-  <meta name="author" content="Misleap">
-  
+block title
+  title= page.title + " | " + config.title
 
-  
-  <meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负
-姑且将该主题的slogan作为第一篇博客的标题，这也正是近些日子想对自己说的。捣鼓了一个晚上外加一个上午，小娘子在github上的静态博客算是见了世面，之前以为有多难，但要抱紧前辈们的大腿，相信披荆斩棘也总会闯出一条路。hexo deploy命令，看着自己的文">
-  
+block main
 
-  
-  
-  <meta name="keywords" content="Life">
-  
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  article.wrapper
+    .post-main
+      .nav
+        nav.container
+          each nav, name in theme.menu
+            +a_with_current(nav, __(name))
+        .container.post-meta
+          if (page.tags && page.tags.length)
+            .post-tags
+              != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:''})
+          .post-time= page.date.format(config.date_format)
 
-  <meta property="og:title" content="言之昭昭，路之迢迢"/>
+      .container.post-header
+        h1: = page.title
 
-  <meta property="og:site_name" content="May the force always be with u"/>
+      .container.post-content
+        != page.content
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="May the force always be with u" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-</head>
-
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">May the force always be with u</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>言之昭昭，路之迢迢</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2016/09/30/20160930/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-09-30T02:59:11.000Z">
-          2016-09-30
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="每一个不曾起舞的日子，都是对生命的辜负"><a href="#每一个不曾起舞的日子，都是对生命的辜负" class="headerlink" title="每一个不曾起舞的日子，都是对生命的辜负"></a>每一个不曾起舞的日子，都是对生命的辜负</h3><hr>
-<p>姑且将该主题的slogan作为第一篇博客的标题，这也正是近些日子想对自己说的。<br>捣鼓了一个晚上外加一个上午，小娘子在github上的静态博客算是见了世面，之前以为有多难，但要抱紧前辈们的大腿，相信披荆斩棘也总会闯出一条路。<br>hexo deploy命令，看着自己的文字放在乳齿文艺范十足的主题上，我只想说，网络拉近了我与世界的距离, 某种程度上满足了我(们)新的幸福感。<br>好了，以后可以愉快地畅聊一名没有故事的女同学如何打怪升级，如何对抗生活的乌泱琐碎…</p>
-<p>求仁得仁，下次见。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/心情随笔/">心情随笔</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Life/">Life</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2016 Misleap
-    
-  </p>
-</footer>
-    
-  </div>
-</div>
-</body>
-</html>
+    .post-main.post-comment
+      include _partial/comments
