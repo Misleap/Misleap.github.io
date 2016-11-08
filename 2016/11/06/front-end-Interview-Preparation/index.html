@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="May the force always be with u">
 <meta property="og:description" content="面试接踵而至，[遗憾于平时接触新技术时没有很好的记录归纳] 技术总结迫在眉睫，可谓’功在当下、利在千秋’, 因为感觉面试氛围很大程度上取决于所言是否让interviewer感觉赏心悦目[喜上眉梢-or we can say 志同道合，可塑之才~]。
 自我介绍做过哪些项目，挑一个讲一下团队开发时，如何分工配合；你的工作技术栈，前端框架[React、Vue]在项目中怎么用的，组件之间如何交互；项目中遇">
-<meta property="og:updated_time" content="2016-11-06T14:11:04.052Z">
+<meta property="og:updated_time" content="2016-11-08T13:41:16.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Front-end Interview Preparation">
 <meta name="twitter:description" content="面试接踵而至，[遗憾于平时接触新技术时没有很好的记录归纳] 技术总结迫在眉睫，可谓’功在当下、利在千秋’, 因为感觉面试氛围很大程度上取决于所言是否让interviewer感觉赏心悦目[喜上眉梢-or we can say 志同道合，可塑之才~]。
@@ -344,7 +344,22 @@
 <li><p>Bootstrap</p>
 </li>
 <li><p>nodeJs</p>
+<p> nodeJs中唯一的全局对象global(相对于浏览器中的window),global.console;</p>
+<p> process代表当前node.js进程；</p>
+<p> Javascript是事件驱动执行的单线程模型，node.js也不例外。Node.js不断执行响应事件的JavaScript函数，直到没有任何响应事件的函数可以执行时，Node.js就退出了。[process.nextTick()]</p>
+<p> 判断js执行环境：</p>
+<blockquote>
+<pre><code>if (typeof(window) === &apos;undefined&apos;) {
+ console.log(&apos;node.js&apos;);
+ } else {
+ console.log(&apos;browser&apos;);
+ }
+</code></pre></blockquote>
+<p> Node利用JavaScript的函数式编程的特性，轻而易举地实现了模块的隔离;</p>
 </li>
+</ol>
+<pre><code>Koa: next generation web framework for nodejs
+</code></pre><ol>
 <li><p>模块化；前端组件化</p>
 </li>
 <li><p>前后端交互，Ajax，布局，框架</p>
@@ -353,8 +368,15 @@
 </li>
 <li><p>ie678兼容性问题有哪些</p>
 </li>
+<li><p>前端工程的三个阶段：<br> 根据项目特征进行框架/库的技术选型<br> 简单构建优化: 选型一种构建工具，对代码进行压缩、校验，再以页面为单位进行简单的机缘合并<br> JS/CSS模块化开发：</p>
+<pre><code>&gt; 分而治之是软件工程中的重要思想，是复杂系统开发和维护的基石，这点放在前端开发中同样适用。在解决了基本开发效率运行效率问题之后，前端团队开始思考维护效率，模块化是目前前端最流行的分治手段。
+&gt; JS模块化方案很多，AMD/CommonJS/UMD/ES6 Module等，对应的框架和工具也一大堆；CSS模块化开发基本都是在less、sass、stylus等预处理器的import/mixin特性支持下实现的
+</code></pre><p> 组件化开发与资源管理</p>
+</li>
 </ol>
-<h3 id="如何学习新技术"><a href="#如何学习新技术" class="headerlink" title="如何学习新技术"></a>如何学习新技术</h3><p>学的最有成就的一门技术是什么；</p>
+<pre><code>前端相比其他软件开发，在基础架构上更迫切的需要组件化开发和资源管理
+    &gt; 何选型技术、如何定制规范、如何分治系统、如何优化性能、如何加载资源，当你从切图开始转变为思考这些问题的时候，我想说：你好，工程师！
+</code></pre><h3 id="如何学习新技术"><a href="#如何学习新技术" class="headerlink" title="如何学习新技术"></a>如何学习新技术</h3><p>学的最有成就的一门技术是什么；</p>
 <h2 id="持续更新"><a href="#持续更新" class="headerlink" title="持续更新^_^"></a>持续更新^_^</h2>
       
     </div>
