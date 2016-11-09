@@ -356,10 +356,10 @@
  }
 </code></pre></blockquote>
 <p> Node利用JavaScript的函数式编程的特性，轻而易举地实现了模块的隔离;</p>
+<p> Koa: next generation web framework for nodejs</p>
 </li>
 </ol>
-<pre><code>Koa: next generation web framework for nodejs
-</code></pre><ol>
+<ol>
 <li><p>模块化；前端组件化</p>
 </li>
 <li><p>前后端交互，Ajax，布局，框架</p>
@@ -369,15 +369,36 @@
 <li><p>ie678兼容性问题有哪些</p>
 </li>
 <li><p>前端工程的三个阶段：<br> 根据项目特征进行框架/库的技术选型<br> 简单构建优化: 选型一种构建工具，对代码进行压缩、校验，再以页面为单位进行简单的机缘合并<br> JS/CSS模块化开发：</p>
-<pre><code>&gt; 分而治之是软件工程中的重要思想，是复杂系统开发和维护的基石，这点放在前端开发中同样适用。在解决了基本开发效率运行效率问题之后，前端团队开始思考维护效率，模块化是目前前端最流行的分治手段。
-&gt; JS模块化方案很多，AMD/CommonJS/UMD/ES6 Module等，对应的框架和工具也一大堆；CSS模块化开发基本都是在less、sass、stylus等预处理器的import/mixin特性支持下实现的
-</code></pre><p> 组件化开发与资源管理</p>
+<pre><code>分而治之是软件工程中的重要思想，是复杂系统开发和维护的基石，这点放在前端开发中同样适用。在解决了基本开发效率运行效率问题之后，前端团队开始思考维护效率，模块化是目前前端最流行的分治手段。
+
+JS模块化方案很多，AMD/CommonJS/UMD/ES6 Module等，对应的框架和工具也一大堆；CSS模块化开发基本都是在less、sass、stylus等预处理器的import/mixin特性支持下实现的组件化开发与资源管理
+
+前端相比其他软件开发，在基础架构上更迫切的需要组件化开发和资源管理和选型技术、如何定制规范、如何分治系统、如何优化性能、如何加载资源，当你从切图开始转变为思考这些问题的时候，我想说：你好，工程师！
+</code></pre></li>
+</ol>
+<h3 id="如何学习新技术"><a href="#如何学习新技术" class="headerlink" title="如何学习新技术"></a>如何学习新技术</h3><p>学的最有成就的一门技术是什么；</p>
+<ol>
+<li><p>数组方法：</p>
+<p> var arr = [1,2,3,4,5];<br> arr.push(6);<br> arr.pop(6);<br> arr.unshift(0);<br> arr.shift(0);</p>
+<p> arr.join(); //即arr.join(‘,’)</p>
 </li>
 </ol>
-<pre><code>前端相比其他软件开发，在基础架构上更迫切的需要组件化开发和资源管理
-    &gt; 何选型技术、如何定制规范、如何分治系统、如何优化性能、如何加载资源，当你从切图开始转变为思考这些问题的时候，我想说：你好，工程师！
-</code></pre><h3 id="如何学习新技术"><a href="#如何学习新技术" class="headerlink" title="如何学习新技术"></a>如何学习新技术</h3><p>学的最有成就的一门技术是什么；</p>
-<h2 id="持续更新"><a href="#持续更新" class="headerlink" title="持续更新^_^"></a>持续更新^_^</h2>
+<ol>
+<li><p>立即执行函数使用块作用域申明来防止污染全局变量</p>
+</li>
+<li><p>requireJs防止js加载阻塞页面渲染，使用程序调用的方式加载js;其目标是鼓励代码的模块化，使用不同于传统<script>标签的脚本加载步骤，用来加速、优化代码，但主要目的是代码的模块化。<br>define用来定义一个模块，require加载依赖模块，并执行加载完后的回调函数；<br>加载requireJs脚本的script标签加入data-main属性，这个属性指定的js将在加载require.js后处理我们把require.config的配置加入到data-main后，就可以使每一个页面都使用这个配置，然后页面中就可以直接使用require来加载所有的短模块名<br>data-main还有一个重要的功能，当script标签指定data-main属性时，require会默认的将data-main指定的js为根路径，是什么意思呢？如上面的data-main=”js/main”设定后，我们在使用require([‘jquery’])后(不配置jquery的paths)，require会自动加载js/jquery.js这个文件，而不是jquery.js，相当于默认配置了：</p>
+<pre><code>require.config({
+    baseUrl: &apos;js&apos;
+})
+</code></pre></li>
+</ol>
+<ol>
+<li><p>typeOf()的返回值有undefined, object, boolean, number, string, function ~<br> Javascript中除了number, string, boolean, null, undefined 之外的就是对象了</p>
+</li>
+<li><p>HTML5中的新标签：section, article, aside, nav, footer, figure, canvas等等</p>
+</li>
+</ol>
+<h2 id="持续更新"><a href="#持续更新" class="headerlink" title="持续更新^_^"></a>持续更新^_^</h2></script></p></li></ol>
           
         
       
