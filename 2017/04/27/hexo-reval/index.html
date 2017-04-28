@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/27/hexo-reval/index.html">
 <meta property="og:site_name" content="May the force always be with u">
 <meta property="og:description" content="从接触Hexo开始，就被Hexo的定制化个性主题和插件深深吸引(Good points)。那时就在想，Oneday I must….(then this day comes)~于是，整个人投入多线程工作了，一方面想记录下个人主题Hexo-reval的开发过程；另一方面，因为其中有些技术如模板引擎EJS/Jade/Swig也是没有接触的，过程中就需要边学边实践，好在两者可以互为补充，(so..)针对">
-<meta property="og:updated_time" content="2017-04-28T12:25:40.037Z">
+<meta property="og:updated_time" content="2017-04-28T13:55:48.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello, hexo-reval">
 <meta name="twitter:description" content="从接触Hexo开始，就被Hexo的定制化个性主题和插件深深吸引(Good points)。那时就在想，Oneday I must….(then this day comes)~于是，整个人投入多线程工作了，一方面想记录下个人主题Hexo-reval的开发过程；另一方面，因为其中有些技术如模板引擎EJS/Jade/Swig也是没有接触的，过程中就需要边学边实践，好在两者可以互为补充，(so..)针对">
@@ -323,16 +323,45 @@
 <blockquote>
 <p>这里，其实我不禁想到一个问题，在Joylive项目开发的时候，记得当时师兄用的是Freemarker模板引擎，那时是第一次接触Template engine, 觉得用这种代码思想来写前端很了不起，提高前端逼格不说也大大提高了前端的生产力吖！—言归正传，要花点时间了解下Freemarker和本文提到的以上有何差别？区别在于前者用于Java语言环境后者们适用于JS？好像不对…</p>
 </blockquote>
-<h3 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h3><p>类似于SASS、LESS，Stylus以接近脚本的方式去写CSS代码。CSS的弱点是静态化，以上预处理框架旨在创建健壮和动态的CSS，真正提高前端CSS的开发效率，算是前端开发人员的福音~</p>
-<p>以上是Hexo主题制作主要涉及的两个技术。另外，Hexo主题一般包括几个页面：</p>
-<ul>
-<li>首页 | index</li>
-<li>归档页 | archive</li>
-<li>文章详情页 | post</li>
-<li>页面详情页 | page</li>
-<li>标签页 | tag</li>
-<li>分类页 | catagory</li>
-</ul>
+<h4 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h4><p>类似于SASS、LESS，Stylus以接近脚本的方式去写CSS代码。CSS的弱点是静态化，以上预处理框架旨在创建健壮和动态的CSS，真正提高前端CSS的开发效率，算是前端开发人员的福音~</p>
+<p>以上是Hexo主题制作主要涉及的两个技术。另外，我们知道Hexo主题一般包括几个页面：</p>
+<table>
+<thead>
+<tr>
+<th>页面</th>
+<th>模板 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首页</td>
+<td>index.ejs</td>
+</tr>
+<tr>
+<td>归档页</td>
+<td>archive.ejs</td>
+</tr>
+<tr>
+<td>文章详情页</td>
+<td>post.ejs</td>
+</tr>
+<tr>
+<td>页面详情页</td>
+<td>page.ejs </td>
+</tr>
+<tr>
+<td>标签页</td>
+<td>tag.ejs</td>
+</tr>
+<tr>
+<td>分类页</td>
+<td>category.ejs</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo官网</a>对所有变量(eg:global/site/page etc.)进行了介绍，这对模板的理解和书写有很好的参考意义。个人认为只要若干重要的变量理解了就基本OK, 这样就知道页面各部分展示内容。</p>
+<p>使用模板引擎的一个好处是可以模块化编写页面，这是软件开发中重要的编程理念，例如将导航条单独作为一个模板。其中，Layout.ejs是最外层的页面模板，其思想从代码中便可窥得：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">components</span>/<span class="attr">head</span>') %&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blog"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">components</span>/<span class="attr">header</span>') %&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"site-main posts-loop"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">%-</span> <span class="attr">body</span> %&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">components</span>/<span class="attr">footer</span>') %&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">components</span>/<span class="attr">googleanalytics</span>') %&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>接下来主要是使用模板和Stylus语法针对自己的主题进行布局和样式的书写，需要不断的实践和调整，是需要精雕细琢的部分。</p>
 <p>参考文档：<br>[1] <a href="http://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/" target="_blank" rel="external">http://www.ahonn.me/2016/12/15/create-a-hexo-theme-from-scratch/</a><br>[2] <a href="http://www.zhangxinxu.com/jq/stylus/" target="_blank" rel="external">http://www.zhangxinxu.com/jq/stylus/</a><br>[3] <a href="https://chensd.com/2016-06/hexo-theme-guide.html" target="_blank" rel="external">https://chensd.com/2016-06/hexo-theme-guide.html</a></p>
 
       
@@ -571,7 +600,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#模板引擎"><span class="nav-number">1.</span> <span class="nav-text">模板引擎</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stylus"><span class="nav-number"></span> <span class="nav-text">Stylus</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#模板引擎"><span class="nav-number">1.</span> <span class="nav-text">模板引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stylus"><span class="nav-number">2.</span> <span class="nav-text">Stylus</span></a></li></ol></div>
             
           </div>
         </section>
